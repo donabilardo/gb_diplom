@@ -69,8 +69,8 @@ gulp-uglify|3.0.2| Мнифицирует JavaScript код
 del|6.0.0| Очищает каталог с готовым проектом перед новой компиляцией
 panini|1.7.2| Переиспользование готового кода 
 [browser-sync](#browsersync) |2.28.1| Live Server Reload
-||
-||
+gulp-webp|4.0.1| Конвертация изображений в формат WebP
+gulp-htmlmin|5.0.1| Минифицирует HTML файлы
 
 </code>
 
