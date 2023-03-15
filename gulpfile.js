@@ -13,6 +13,7 @@ const plumber = require("gulp-plumber");
 const rigger1 = require("gulp-rigger");
 const panini = require("panini");
 const imagemin = require("gulp-imagemin");
+const webp = require('gulp-webp');
 const del = require("del");
 const notify = require("gulp-notify");
 const { reload, stream } = require("browser-sync");
@@ -78,8 +79,6 @@ function html() {
         .pipe(browserSync.reload({ stream: true }))// передаем обновления веб-серверу
 }
 
-
-
 function css() {
     return src(path.src.css, { base: srcPath + "assets/scss/" })
         .pipe(plumber({
@@ -133,6 +132,7 @@ function images() {
                 ]
             })
         ]))//минифицируем изображения
+        .pipe(webp()) //преобразуем изображения в формат webp
         .pipe(dest(path.build.image)) //копируем минифицированные изображения в готовый проект
         .pipe(browserSync.reload({ stream: true }))// передаем обновления веб-серверу
 }
@@ -164,6 +164,7 @@ exports.htmlmin = htmlmin;
 exports.css = css;
 exports.js = js;
 exports.images = images;
+exports.webp = webp;
 exports.fonts = fonts;
 exports.clean = clean;
 exports.build = build;
