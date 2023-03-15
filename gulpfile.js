@@ -17,6 +17,7 @@ const del = require("del");
 const notify = require("gulp-notify");
 const { reload, stream } = require("browser-sync");
 const browserSync = require("browser-sync").create();
+const htmlmin = require('gulp-htmlmin');
 
 
 /*Определяем пути*/
@@ -72,9 +73,12 @@ function html() {
             // helpers: srcPath + 'tpl/helpers/',
             data: srcPath + 'tpl/data/'
         }))
+        .pipe(htmlmin({ collapseWhitespace: true }))
         .pipe(dest(path.build.html)) //собираем html
         .pipe(browserSync.reload({ stream: true }))// передаем обновления веб-серверу
 }
+
+
 
 function css() {
     return src(path.src.css, { base: srcPath + "assets/scss/" })
@@ -156,6 +160,7 @@ const build = gulp.series(clean, gulp.parallel(html, css, js, fonts, images));
 const watch = gulp.parallel(build, watchFiles, serve);
 
 exports.html = html;
+exports.htmlmin = htmlmin;
 exports.css = css;
 exports.js = js;
 exports.images = images;
