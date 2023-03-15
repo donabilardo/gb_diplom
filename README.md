@@ -149,6 +149,7 @@ Plumer + gulp-notify = отображение ошибок которые мог
 ```
 ****
 
+[Используемая сборка Gulp](https://github.com/donabilardo/gb_diplom/tree/gulp-install)
 
 
 <a id="git"></a>
